@@ -139,6 +139,7 @@ client.on("message", async message => {
     const m = await message.channel.send("Help?");
     m.edit(`Salut, eu am fost creat de ***@_xProMDFKx_#0957*** \n \n***Comenzi*** \n/serverinfo - Informatii despre server \n/help - Comenzile serverului \n/say - Botul iti scrie mesajul \n/staff - Vezi administratorii serverului \n/ping - Vezi pingul tau \n/salut - Trimite cuiva un salut \n/mass - Trimite un mesaj tuturor (Doar ownerii)`);
   }
+});
 
 client.on('ready', () => {
   client.user.setGame('/help pentru comenzi', 'https://www.twitch.tv/streamerhouse', '/help pentru comenzi')
@@ -164,6 +165,6 @@ message.delete()
 client.on("ready", () => {
     console.log("On " + client.guilds.size + " guilds.")
     console.log("With " + client.users.size + " members.")
-})
+});
 
 client.login(process.env.BOT_TOKEN)
