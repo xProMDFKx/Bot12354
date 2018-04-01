@@ -56,7 +56,7 @@ client.on("message", async message => {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
     const m = await message.channel.send("Ping?");
-    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+    m.edit(`Pong! Latența este de ${m.createdTimestamp - message.createdTimestamp}ms. Latența API este de ${Math.round(client.ping)}ms`);
   }
   
   if(command === "say") {
@@ -74,25 +74,25 @@ client.on("message", async message => {
     // Please read on Array.some() to understand this bit: 
     // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
     if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
-      return message.reply("Sorry, you don't have permissions to use this!");
+      return message.reply(":exclamation: Sorry, nu ai acces la aceasta comanda!");
     
     // Let's first check if we have a member and if we can kick them!
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
     let member = message.mentions.members.first();
     if(!member)
-      return message.reply("Please mention a valid member of this server");
+      return message.reply(":exclamation: Mentioneaza un membru valid de aici!");
     if(!member.kickable) 
-      return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
+      return message.reply(":exclamation: Nu pot sa ii dau kick acestei persoane!");
     
     // slice(1) removes the first part, which here should be the user mention!
     let reason = args.slice(1).join(' ');
     if(!reason)
-      return message.reply("Please indicate a reason for the kick!");
+      return message.reply(":exclamation: Terog sa scrii si un motiv!");
     
     // Now, time for a swift kick in the nuts!
     await member.kick(reason)
-      .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
-    message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+      .catch(error => message.reply(`Sorry ${message.author} Nu pot sa ii dau kick din cauza : ${error}`));
+    message.reply(`:exclamation: ${member.user.tag} a fost dat afara de ${message.author.tag} din motivul: ${reason}`);
 
   }
   
@@ -100,21 +100,21 @@ client.on("message", async message => {
     // Most of this command is identical to kick, except that here we'll only let admins do it.
     // In the real world mods could ban too, but this is just an example, right? ;)
     if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
-      return message.reply("Sorry, you don't have permissions to use this!");
+      return message.reply(":exclamation: Sorry, nu ai acces la aceasta comanda!");
     
     let member = message.mentions.members.first();
     if(!member)
-      return message.reply("Please mention a valid member of this server");
+      return message.reply(":exclamation: Mentioneaza un membru valid de aici!");
     if(!member.bannable) 
-      return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
+      return message.reply(":exclamation: Nu pot sa ii dau ban acestei persoane!");
 
     let reason = args.slice(1).join(' ');
     if(!reason)
-      return message.reply("Please indicate a reason for the ban!");
+      return message.reply(":exclamation: Terog sa scrii si un motiv!");
     
     await member.ban(reason)
-      .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
-    message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+      .catch(error => message.reply(`Sorry ${message.author} nu pot sa ii dau ban din cauza : ${error}`));
+    message.reply(`:exclamation: ${member.user.tag} a fost banat de ${message.author.tag} din motivul: ${reason}`);
   }
   
   if(command === "purge") {
@@ -125,12 +125,12 @@ client.on("message", async message => {
     
     // Ooooh nice, combined conditions. <3
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
-      return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
+      return message.reply(":exclamation: Scrie un numar intre 2 si 100");
     
     // So we get our messages, and delete them. Simple enough, right?
     const fetched = await message.channel.fetchMessages({count: deleteCount});
     message.channel.bulkDelete(fetched)
-      .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
+      .catch(error => message.reply(`:exclamation: Nu pot sa sterg mesajele din cauza: ${error}`));
   }
   
   if(command === "help") {
@@ -149,12 +149,12 @@ client.on("message", async message => {
   
   if(command === "serverinfo") {
   const embed = new Discord.RichEmbed()
-  embed.addField('Members', message.guild.memberCount, true)
-  embed.addField('Name', message.guild.name, true)
-  embed.addField('Region', message.guild.region, true)
-  embed.addField('Owner', message.guild.owner, true)
+  embed.addField('Membrii', message.guild.memberCount, true)
+  embed.addField('Nume', message.guild.name, true)
+  embed.addField('Regiunie', message.guild.region, true)
+  embed.addField('Fondator', message.guild.owner, true)
   embed.addField('ID', message.guild.id, true)
-  embed.setColor(0xC0C0C0)
+  embed.setColor(0x551B8C)
   embed.setThumbnail(message.guild.iconURL)
   message.channel.sendEmbed(embed)
   }
