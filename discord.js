@@ -147,11 +147,16 @@ client.on("message", async message => {
     m.edit(`Stafful serverului este @_xProMDFKx_#0957 si MrLightt_#0907`);
   }
   
-  if(command === "salut") {
-    // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
-    // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
-    const m = await message.channel.send("Salut?");
-    m.edit(`Vrei sa ii trimi cuiva un salut? :heavy_check_mark: (Exemplu: /salut @username)`);
+  if(command === "serverinfo") {
+  const embed = new Discord.RichEmbed()
+  embed.addField('Members', message.guild.memberCount, true)
+  embed.addField('Name', message.guild.name, true)
+  embed.addField('Region', message.guild.region, true)
+  embed.addField('Owner', message.guild.owner, true)
+  embed.addField('ID', message.guild.id, true)
+  embed.setColor(0xC0C0C0)
+  embed.setThumbnail(message.guild.iconURL)
+  message.channel.sendEmbed(embed)
   }
   
   if(command === "salut") {
