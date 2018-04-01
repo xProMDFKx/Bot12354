@@ -132,7 +132,6 @@ client.on("message", async message => {
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
-});
 
 //SCA
     if (message.content === '/help') {
@@ -208,6 +207,7 @@ message.delete()
 client.on("ready", () => {
     console.log("On " + client.guilds.size + " guilds.")
     console.log("With " + client.users.size + " members.")
+  }
 });
 
 client.login(process.env.BOT_TOKEN)
