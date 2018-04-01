@@ -139,6 +139,27 @@ client.on("message", async message => {
     const m = await message.channel.send("Help?");
     m.edit(`Salut, eu am fost creat de ***@_xProMDFKx_#0957*** \n \n***Comenzi*** \n/serverinfo - Informatii despre server \n/help - Comenzile serverului \n/say - Botul iti scrie mesajul \n/staff - Vezi administratorii serverului \n/ping - Vezi pingul tau \n/salut - Trimite cuiva un salut \n/mass - Trimite un mesaj tuturor (Doar ownerii)`);
   }
+  
+  if(command === "staff") {
+    // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
+    // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
+    const m = await message.channel.send("Staff?");
+    m.edit(`Stafful serverului este @_xProMDFKx_#0957 si MrLightt_#0907`);
+  }
+  
+  if(command === "salut") {
+    // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
+    // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
+    const m = await message.channel.send("Salut?");
+    m.edit(`Vrei sa ii trimi cuiva un salut? :heavy_check_mark: (Exemplu: /salut @username)`);
+  }
+  
+  if(command === "salut") {
+    // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
+    // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
+    const m = await message.channel.send("Salut?");
+    m.edit(`Vrei sa ii trimi cuiva un salut? :heavy_check_mark: (Exemplu: /salut @username)`);
+  }
 });
 
 client.on('ready', () => {
