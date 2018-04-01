@@ -133,18 +133,15 @@ client.on("message", async message => {
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
 
-//SCA
     if (message.content === '/help') {
     	message.reply('Salut, eu am fost creat de ***@_xProMDFKx_#0957*** \n \n***Comenzi*** \n/serverinfo - Informatii despre server \n/help - Comenzile serverului \n/say - Botul iti scrie mesajul \n/staff - Vezi administratorii serverului \n/ping - Vezi pingul tau \n/salut - Trimite cuiva un salut \n/mass - Trimite un mesaj tuturor (Doar ownerii)');
       
     }  
-//SFSA
     if (message.content === "/salut") { // creates the command cookie
         if (args[1]) message.channel.send(message.author.toString() + " has given " + args[1].toString() + " a cookie! :cookie:") // sends the message saying someone has given someone else a cookie if someone mentions someone else
         else message.channel.send("Vrei sa ii trimi cuiva un salut? :heavy_check_mark: (Exemplu: /salut @username)") // sends the error message if no-one is mentioned
       
     }
-//SFSA
     if (message.content === "/staff") { // creates the command cookie
   const embed = new Discord.RichEmbed()
   embed.setTitle("**Staff**\n")
@@ -153,7 +150,6 @@ client.on("message", async message => {
   message.channel.sendEmbed(embed)
       
     }
-//SASASA
 if (message.content.startsWith(prefix + 'serverinfo1235')) {
   const embed = new Discord.RichEmbed()
   embed.setTitle("**List of Commands**\n") // sets the title to List of Commands
