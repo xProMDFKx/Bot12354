@@ -73,7 +73,7 @@ client.on("message", async message => {
     // This command must be limited to mods and admins. In this example we just hardcode the role names.
     // Please read on Array.some() to understand this bit: 
     // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
-    if(!message.member.roles.some(r=>["« ℑ | Fondatori »", "Moderator"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["« ℑ | Fondatori »", "Moderator", "UNICUL FONDATOR"].includes(r.name)) )
       return message.reply(":exclamation: Sorry, nu ai acces la aceasta comanda!");
     
     // Let's first check if we have a member and if we can kick them!
@@ -99,7 +99,7 @@ client.on("message", async message => {
   if(command === "ban") {
     // Most of this command is identical to kick, except that here we'll only let admins do it.
     // In the real world mods could ban too, but this is just an example, right? ;)
-    if(!message.member.roles.some(r=>["« ℑ | Fondatori »"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["« ℑ | Fondatori »", "UNICUL FONDATOR"].includes(r.name)) )
       return message.reply(":exclamation: Sorry, nu ai acces la aceasta comanda!");
     
     let member = message.mentions.members.first();
@@ -140,13 +140,6 @@ client.on("message", async message => {
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
     const m = await message.channel.send("Help?");
     m.edit(`Salut, eu am fost creat de ***@_xProMDFKx_#0957*** \n \n***Comenzi*** \n/serverinfo - Informatii despre server \n/help - Comenzile serverului \n/say - Botul iti scrie mesajul \n/staff - Vezi administratorii serverului \n/ping - Vezi pingul tau \n/salut - Trimite cuiva un salut \n/mass - Trimite un mesaj tuturor (Doar ownerii) \n/ban - Baneaza o persoana \n/kick - Dai kick unei persoane \n/purge - Sterge mesajele`);
-  }
-  
-  if(command === "staff") {
-    // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
-    // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
-    const m = await message.channel.send("Staff?");
-    m.edit(`Stafful serverului este @_xProMDFKx_#0957 si MrLightt_#0907`);
   }
   
   if(command === "serverinfo") {
