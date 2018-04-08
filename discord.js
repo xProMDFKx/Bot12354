@@ -168,7 +168,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
 if(message.content.startsWith('/mass')) {
-    if(message.author.id === "147819037580197888"){
+    if(message.author.id === "272074897839226884"){
         let args = message.content.split(" ").slice(1);
         var argresult = args.join(" ")
         const argsresult = args.join(" ")
